@@ -25,5 +25,6 @@ int main(int argc, char const *argv[])
     arq_saida << msg << endl;
     arq_saida.close();
     cout << "Mensagem ''" << msg << "'' adicionada!" << endl;
+
     return 0;
 }
