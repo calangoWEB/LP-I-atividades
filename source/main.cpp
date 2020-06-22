@@ -3,14 +3,12 @@
 #include <fstream>
 using namespace std;
 
-//Formata a data e hora
+//Formata a data ou hora
 std::string format_current_date(const std::string &format)
 {
     std::time_t time = std::time(nullptr);
     char result[1024];
-
     std::strftime(result, sizeof(result), format.c_str(), std::localtime(&time));
-
     return std::string(result);
 }
 
@@ -24,13 +22,13 @@ std::string get_current_time() { return format_current_date("%H:%M:%S"); }
 void show_usage(const string &prog_name);
 
 //Verifica se já existe algum registro no arquivo com a data de hoje;
-bool verificar_data(const string &data_hoje);
+bool check_date(const string &date_today);
 
 //Lista as mensagem gravadas no arquivo
 void list();
 
 //Adiciona a mensagem ao arquivo
-void add_message(string const &message, bool const &verificacao_current_data);
+void add_message(string const &message, bool const &check_current_date);
 
 int main(int argc, char const *argv[])
 {
@@ -51,7 +49,7 @@ int main(int argc, char const *argv[])
             cout << "Informe uma mensagem: ";
             getline(cin, msg);
         }
-        registro_dia = verificar_data(get_current_date());
+        registro_dia = check_date(get_current_date());
         add_message(msg, registro_dia);
         return 0;
     }
@@ -90,10 +88,10 @@ void list()
     arq_entrada.close();
 }
 
-void add_message(string const &message, bool const &verificacao_current_data)
+void add_message(string const &message, bool const &check_current_date)
 {
     ofstream arq_saida("arquivo.txt", ios::app);
-    if (!verificacao_current_data)
+    if (!check_current_date)
     {
         arq_saida << "\n# " << get_current_date() << "\n\n";
     }
@@ -103,7 +101,7 @@ void add_message(string const &message, bool const &verificacao_current_data)
     cout << "Mensagem '" << message << "' adicionada!" << endl;
 }
 
-bool verificar_data(const string &data_hoje)
+bool check_date(const string &date_today)
 {
     ifstream file("arquivo.txt");
     string line;
