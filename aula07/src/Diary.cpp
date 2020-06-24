@@ -15,7 +15,7 @@ void Diary::add(const std::string &message)
     messages[messages_size] = msg;
     messages_size++;
 
-    // teste
+    // Teste
     std::cout << messages[0].content << std::endl;
     // std::cout << "add mensagem" << std::endl;
 }
