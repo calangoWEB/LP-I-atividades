@@ -10,12 +10,14 @@ Diary::Diary(const std::string &filename) : messages_capacity(10), messages(null
 void Diary::add(const std::string &message)
 {
     // adicionar mensagem no array de mensagens
-    // std::cout << "add mensagem" << std::endl;
     Message msg;
     msg.content = message;
     messages[messages_size] = msg;
     messages_size++;
+
+    // teste
     std::cout << messages[0].content << std::endl;
+    // std::cout << "add mensagem" << std::endl;
 }
 
 void Diary::write()
