@@ -14,7 +14,7 @@ struct App
     void add();
     void add(const std::string message);
     void list_messages();
-    void search(const std::string word);
+    void write();
 };
 
 #endif //!__APP__H__

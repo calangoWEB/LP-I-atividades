@@ -20,7 +20,6 @@ struct Diary
     void write();
     void read();
     void list();
-    Message *search(const std::string &what);
 };
 
 #endif //!__DIARY__H__

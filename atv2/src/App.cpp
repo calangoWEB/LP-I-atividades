@@ -20,27 +20,9 @@ int App::run(int argc, char *argv[])
     }
     else if (action == "list")
         list_messages();
-    else if (action == "search")
-    {
-        if (argc == 2)
-            show_usage(argv[0]);
-        else
-        {
-            search(argv[2]);
-        }
-    }
     else
         return show_usage(argv[0]);
     return 0;
-}
-
-void App::search(const std::string word)
-{
-    Message *response = diary.search(word);
-    if (response != nullptr)
-        std::cout << "- " << response->content << std::endl;
-    else
-        std::cout << "Message not found!" << std::endl;
 }
 
 void App::add()
@@ -61,6 +43,11 @@ void App::add(const std::string message)
 void App::list_messages()
 {
     diary.list();
+}
+
+void App::write()
+{
+    diary.write();
 }
 
 int App::show_usage(const std::string name_program)
